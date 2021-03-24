@@ -1,15 +1,14 @@
 import readlineSync from 'readline-sync';
-import { greeting, userName } from './cli.js';
+import { greetingText, userName } from './cli.js';
+import correctAnswerText from './correct-answer-text.js';
+import finishGameText from './finish-game-text.js';
 import randomize from './randomize-number.js';
+import wrongAnswerText from './wrong-answer-text.js';
 
-greeting();
+greetingText();
 
 const name = userName();
 let correctAnswerCount = 0;
-
-const finishGame = () => {
-  console.log(`Congratulations, ${name}!`);
-};
 
 const gameStep = () => {
   const questionNumber = randomize();
@@ -18,17 +17,17 @@ const gameStep = () => {
   console.log(`Question: ${questionNumber}`);
 
   const userAnswer = readlineSync.question('Your answer: ');
+
   if (questionNumber % 2 === 0) {
     correctAnswer = 'yes';
   } else correctAnswer = 'no';
+
   if (userAnswer === correctAnswer) {
-    console.log('Correct');
+    correctAnswerText();
     correctAnswerCount += 1;
-    if (correctAnswerCount === 3) finishGame();
+    if (correctAnswerCount === 3) finishGameText(name);
     else gameStep();
-  } else {
-    console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
-  }
+  } else wrongAnswerText(userAnswer, correctAnswer);
 };
 
 const startGame = () => {
