@@ -24,7 +24,7 @@ const gameStep = (gameName, userName, correctAnswerCount) => {
     correctAnswerCount += 1;
     if (correctAnswerCount === 3) finishGameText(userName);
     else gameStep(gameName, userName, correctAnswerCount)
-  } else wrongAnswerText(userAnswer, correctAnswer);
+  } else wrongAnswerText(userAnswer, correctAnswer, userName);
 }
 
 
