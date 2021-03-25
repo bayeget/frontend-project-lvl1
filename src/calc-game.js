@@ -31,16 +31,12 @@ const getMathExpression = () => {
 
 const calcGame = () => {
   const expression = getMathExpression();
-  let itsCorrectAnswer;
 
   console.log(`Question: ${expression}`);
 
   const userAnswer = readlineSync.question('Your answer: ');
-  
-  if (+userAnswer === correctAnswer) itsCorrectAnswer = true;
-  else itsCorrectAnswer = false;
 
-  return [itsCorrectAnswer, userAnswer, correctAnswer]
+  return [+userAnswer, correctAnswer]
 };
 
 
