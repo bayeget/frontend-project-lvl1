@@ -6,6 +6,7 @@ import calcGame from './calc-game.js';
 import parityCheckGame from './parity-check-game.js';
 import gcdGame from './gcd-game.js';
 import progressionGame from './progression-game.js';
+import primeGame from './prime-game.js';
 
 const gameStep = (gameName, userName, correctAnswerCount) => {
   let userAnswer,
@@ -15,6 +16,7 @@ const gameStep = (gameName, userName, correctAnswerCount) => {
   else if (gameName === 'brain-calc') [userAnswer, correctAnswer] = calcGame();
   else if (gameName === 'brain-gcd') [userAnswer, correctAnswer] = gcdGame();
   else if (gameName === 'brain-progression') [userAnswer, correctAnswer] = progressionGame();
+  else if (gameName === 'brain-prime') [userAnswer, correctAnswer] = primeGame();
   else console.log('Houston we have a problem');
 
   if (userAnswer === correctAnswer) {
@@ -35,6 +37,7 @@ const startGame = (gameName) => {
   else if (gameName === 'brain-calc') console.log('What is the result of the expression?');
   else if (gameName === 'brain-gcd') console.log('Find the greatest common divisor of given numbers.');
   else if (gameName === 'brain-progression') console.log('What number is missing in the progression?');
+  else if (gameName === 'brain-prime') console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
   else console.log('Houston we have a problem');
 
   gameStep(gameName, userName, correctAnswerCount);
