@@ -1,15 +1,8 @@
 import readlineSync from 'readline-sync';
-import { greetingText, userName } from './cli.js';
-import correctAnswerText from './correct-answer-text.js';
-import finishGameText from './finish-game-text.js';
 import getRandomNumber from './get-random-number.js';
-import wrongAnswerText from './wrong-answer-text.js';
 
-greetingText();
 
-const name = userName();
-let answer;
-let correctAnswerCount = 0;
+let correctAnswer;
 
 const getRandomMathOperator = (operator) => {  
   if (operator === 0 ) return '-'
@@ -18,9 +11,9 @@ const getRandomMathOperator = (operator) => {
 }
 
 const getAnswer = (operator, firstNumber, secondNumber) => {
-  if (operator === 0 ) answer = firstNumber - secondNumber
-  else if (operator === 1) answer = firstNumber + secondNumber
-  else answer = firstNumber * secondNumber
+  if (operator === 0 ) correctAnswer = firstNumber - secondNumber
+  else if (operator === 1) correctAnswer = firstNumber + secondNumber
+  else correctAnswer = firstNumber * secondNumber
 }
 
 const getMathExpression = () => {
@@ -36,23 +29,19 @@ const getMathExpression = () => {
 
 
 
-const gameStep = () => {
+const calcGame = () => {
   const expression = getMathExpression();
+  let itsCorrectAnswer;
+
   console.log(`Question: ${expression}`);
 
   const userAnswer = readlineSync.question('Your answer: ');
+  
+  if (+userAnswer === correctAnswer) itsCorrectAnswer = true;
+  else itsCorrectAnswer = false;
 
-  if (+userAnswer === answer) {
-    correctAnswerText();
-    correctAnswerCount += 1;
-    if (correctAnswerCount === 3) finishGameText(name);
-    else gameStep()
-  } else wrongAnswerText(userAnswer, answer);
+  return [itsCorrectAnswer, userAnswer, correctAnswer]
 };
 
-const startCalcGame = () => {
-  console.log('What is the result of the expression?');
-  gameStep();
-};
 
-export default startCalcGame;
+export default calcGame;
