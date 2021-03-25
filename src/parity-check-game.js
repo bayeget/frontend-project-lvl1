@@ -2,7 +2,7 @@ import readlineSync from 'readline-sync';
 import { greetingText, userName } from './cli.js';
 import correctAnswerText from './correct-answer-text.js';
 import finishGameText from './finish-game-text.js';
-import randomize from './randomize-number.js';
+import getRandomNumber from './get-random-number.js';
 import wrongAnswerText from './wrong-answer-text.js';
 
 greetingText();
@@ -11,7 +11,7 @@ const name = userName();
 let correctAnswerCount = 0;
 
 const gameStep = () => {
-  const questionNumber = randomize();
+  const questionNumber = getRandomNumber();
   let correctAnswer;
 
   console.log(`Question: ${questionNumber}`);
@@ -30,9 +30,9 @@ const gameStep = () => {
   } else wrongAnswerText(userAnswer, correctAnswer);
 };
 
-const startGame = () => {
+const startParityCheckGame = () => {
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
   gameStep();
 };
 
-export default startGame;
+export default startParityCheckGame;

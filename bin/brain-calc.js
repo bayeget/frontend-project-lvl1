@@ -1,6 +1,5 @@
 #!/usr/bin/env node
-import { greetingText, userName } from '../src/cli.js';
 
-greetingText();
+import startCalcGame from "../src/calc-game.js";
 
-userName();
+startCalcGame()
