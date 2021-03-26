@@ -2,11 +2,11 @@ import correctAnswerText from './correct-answer-text.js';
 import finishGameText from './finish-game-text.js';
 import wrongAnswerText from './wrong-answer-text.js';
 import { greetingText, getUserName } from './cli.js';
-import calcGame from './calc-game.js';
-import parityCheckGame from './parity-check-game.js';
-import gcdGame from './gcd-game.js';
-import progressionGame from './progression-game.js';
-import primeGame from './prime-game.js';
+import calcGame from './games/calc-game.js';
+import parityCheckGame from './games/parity-check-game.js';
+import gcdGame from './games/gcd-game.js';
+import progressionGame from './games/progression-game.js';
+import primeGame from './games/prime-game.js';
 
 let correctAnswerCount = 0;
 

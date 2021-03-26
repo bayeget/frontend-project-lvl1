@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import getRandomNumber from './get-random-number.js';
+import getRandomNumber from '../helper/get-random-number.js';
 
 let correctAnswer;
 
