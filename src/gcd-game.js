@@ -19,9 +19,9 @@ const gcdGame = () => {
   const firstNumberDivisors = defineDivisors(firstNumber);
   const secondNumberDivisors = defineDivisors(secondNumber);
 
-  for (const divisor of firstNumberDivisors) {
-    if (secondNumberDivisors.includes(divisor)) {
-      correctAnswer = divisor;
+  for (let i = 0; i < firstNumberDivisors.length; i += 1) {
+    if (secondNumberDivisors.includes(firstNumberDivisors[i])) {
+      correctAnswer = firstNumberDivisors[i];
       break;
     }
   }
