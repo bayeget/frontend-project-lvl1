@@ -1,20 +1,22 @@
 import readlineSync from 'readline-sync';
 import getRandomNumber from './get-random-number.js';
 
-
 let correctAnswer;
 
-const getRandomMathOperator = (operator) => {  
-  if (operator === 0 ) return '-'
-  else if (operator === 1) return '+'
-  else return '*'
-}
+const getRandomMathOperator = (operator) => {
+  let currentOperator = '*';
+
+  if (operator === 0) currentOperator = '-';
+  else if (operator === 1) currentOperator = '+';
+
+  return currentOperator;
+};
 
 const getAnswer = (operator, firstNumber, secondNumber) => {
-  if (operator === 0 ) correctAnswer = firstNumber - secondNumber
-  else if (operator === 1) correctAnswer = firstNumber + secondNumber
-  else correctAnswer = firstNumber * secondNumber
-}
+  if (operator === 0) correctAnswer = firstNumber - secondNumber;
+  else if (operator === 1) correctAnswer = firstNumber + secondNumber;
+  else correctAnswer = firstNumber * secondNumber;
+};
 
 const getMathExpression = () => {
   const operatorNumber = getRandomNumber(0, 3);
@@ -24,10 +26,8 @@ const getMathExpression = () => {
 
   getAnswer(operatorNumber, firstNumber, secondNumber);
 
-  return `${firstNumber} ${operator} ${secondNumber}`
-}
-
-
+  return `${firstNumber} ${operator} ${secondNumber}`;
+};
 
 const calcGame = () => {
   const expression = getMathExpression();
@@ -36,8 +36,7 @@ const calcGame = () => {
 
   const userAnswer = readlineSync.question('Your answer: ');
 
-  return [+userAnswer, correctAnswer]
+  return [+userAnswer, correctAnswer];
 };
-
 
 export default calcGame;

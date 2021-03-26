@@ -8,9 +8,11 @@ import gcdGame from './gcd-game.js';
 import progressionGame from './progression-game.js';
 import primeGame from './prime-game.js';
 
-const gameStep = (gameName, userName, correctAnswerCount) => {
-  let userAnswer,
-      correctAnswer;
+let correctAnswerCount = 0;
+
+const gameStep = (gameName, userName) => {
+  let userAnswer;
+  let correctAnswer;
 
   if (gameName === 'brain-even') [userAnswer, correctAnswer] = parityCheckGame();
   else if (gameName === 'brain-calc') [userAnswer, correctAnswer] = calcGame();
@@ -23,15 +25,13 @@ const gameStep = (gameName, userName, correctAnswerCount) => {
     correctAnswerText();
     correctAnswerCount += 1;
     if (correctAnswerCount === 3) finishGameText(userName);
-    else gameStep(gameName, userName, correctAnswerCount)
+    else gameStep(gameName, userName, correctAnswerCount);
   } else wrongAnswerText(userAnswer, correctAnswer, userName);
-}
-
+};
 
 const startGame = (gameName) => {
   greetingText();
   const userName = getUserName();
-  let correctAnswerCount = 0;
 
   if (gameName === 'brain-even') console.log('Answer "yes" if the number is even, otherwise answer "no".');
   else if (gameName === 'brain-calc') console.log('What is the result of the expression?');
@@ -40,8 +40,7 @@ const startGame = (gameName) => {
   else if (gameName === 'brain-prime') console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
   else console.log('Houston we have a problem');
 
-  gameStep(gameName, userName, correctAnswerCount);
-
-}
+  gameStep(gameName, userName);
+};
 
 export default startGame;

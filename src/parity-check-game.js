@@ -12,9 +12,8 @@ const parityCheckGame = () => {
   if (questionNumber % 2 === 0) {
     correctAnswer = 'yes';
   } else correctAnswer = 'no';
-  
+
   return [userAnswer, correctAnswer];
 };
-
 
 export default parityCheckGame;
