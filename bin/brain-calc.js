@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import startGame from '../src/start-game.js';
+import calcGame from '../src/games/calc-game.js';
 
-startGame('brain-calc');
+calcGame();

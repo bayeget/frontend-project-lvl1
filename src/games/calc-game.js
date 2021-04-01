@@ -1,7 +1,7 @@
-import readlineSync from 'readline-sync';
+import coreGame from '../core.js';
 import getRandomNumber from '../helper/get-random-number.js';
 
-let correctAnswer;
+const gameDescription = 'What is the result of the expression?';
 
 const getRandomMathOperator = (operator) => {
   let currentOperator = '*';
@@ -13,30 +13,28 @@ const getRandomMathOperator = (operator) => {
 };
 
 const getAnswer = (operator, firstNumber, secondNumber) => {
+  let correctAnswer;
+
   if (operator === 0) correctAnswer = firstNumber - secondNumber;
   else if (operator === 1) correctAnswer = firstNumber + secondNumber;
   else correctAnswer = firstNumber * secondNumber;
+
+  return correctAnswer;
 };
 
-const getMathExpression = () => {
+const getQuestionAndAnswer = () => {
   const operatorNumber = getRandomNumber(0, 3);
   const operator = getRandomMathOperator(operatorNumber);
   const firstNumber = getRandomNumber(0, 100);
   const secondNumber = getRandomNumber(0, 100);
+  const question = `${firstNumber} ${operator} ${secondNumber}`;
+  const answer = getAnswer(operatorNumber, firstNumber, secondNumber);
 
-  getAnswer(operatorNumber, firstNumber, secondNumber);
-
-  return `${firstNumber} ${operator} ${secondNumber}`;
+  return [question, answer];
 };
 
 const calcGame = () => {
-  const expression = getMathExpression();
-
-  console.log(`Question: ${expression}`);
-
-  const userAnswer = readlineSync.question('Your answer: ');
-
-  return [+userAnswer, correctAnswer];
+  coreGame(gameDescription, getQuestionAndAnswer);
 };
 
 export default calcGame;

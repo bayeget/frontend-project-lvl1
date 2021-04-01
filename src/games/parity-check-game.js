@@ -1,19 +1,21 @@
-import readlineSync from 'readline-sync';
+import coreGame from '../core.js';
 import getRandomNumber from '../helper/get-random-number.js';
 
-const parityCheckGame = () => {
+const gameDescription = 'Answer "yes" if the number is even, otherwise answer "no".';
+
+const getQuestionAndAnswer = () => {
   const questionNumber = getRandomNumber(0, 10);
   let correctAnswer;
-
-  console.log(`Question: ${questionNumber}`);
-
-  const userAnswer = readlineSync.question('Your answer: ');
 
   if (questionNumber % 2 === 0) {
     correctAnswer = 'yes';
   } else correctAnswer = 'no';
 
-  return [userAnswer, correctAnswer];
+  return [questionNumber, correctAnswer];
+};
+
+const parityCheckGame = () => {
+  coreGame(gameDescription, getQuestionAndAnswer);
 };
 
 export default parityCheckGame;

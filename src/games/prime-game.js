@@ -1,7 +1,8 @@
-import readlineSync from 'readline-sync';
+import coreGame from '../core.js';
 import getRandomNumber from '../helper/get-random-number.js';
 
 let correctAnswer;
+const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const isPrime = (num) => {
   for (let i = 2; i < num; i += 1) {
@@ -11,16 +12,17 @@ const isPrime = (num) => {
   return true;
 };
 
-const primeGame = () => {
+const getQuestionAndAnswer = () => {
   const questionNumber = getRandomNumber(2, 100);
 
   if (isPrime(questionNumber)) correctAnswer = 'yes';
   else correctAnswer = 'no';
 
-  console.log(`Question: ${questionNumber}`);
+  return [questionNumber, correctAnswer];
+};
 
-  const userAnswer = readlineSync.question('Your answer: ');
-  return [userAnswer, correctAnswer];
+const primeGame = () => {
+  coreGame(gameDescription, getQuestionAndAnswer);
 };
 
 export default primeGame;

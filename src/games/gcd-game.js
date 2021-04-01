@@ -1,7 +1,7 @@
-import readlineSync from 'readline-sync';
+import coreGame from '../core.js';
 import getRandomNumber from '../helper/get-random-number.js';
 
-let correctAnswer;
+const gameDescription = 'Find the greatest common divisor of given numbers.';
 
 const defineDivisors = (num) => {
   const divisors = [];
@@ -13,11 +13,13 @@ const defineDivisors = (num) => {
   return divisors;
 };
 
-const gcdGame = () => {
+const getQuestionAndAnswer = () => {
   const firstNumber = getRandomNumber(1, 100);
   const secondNumber = getRandomNumber(1, 100);
   const firstNumberDivisors = defineDivisors(firstNumber);
   const secondNumberDivisors = defineDivisors(secondNumber);
+  const question = `${firstNumber} ${secondNumber}`;
+  let correctAnswer;
 
   for (let i = 0; i < firstNumberDivisors.length; i += 1) {
     if (secondNumberDivisors.includes(firstNumberDivisors[i])) {
@@ -26,11 +28,11 @@ const gcdGame = () => {
     }
   }
 
-  console.log(`Question: ${firstNumber} ${secondNumber}`);
+  return [question, correctAnswer];
+};
 
-  const userAnswer = readlineSync.question('Your answer: ');
-
-  return [+userAnswer, correctAnswer];
+const gcdGame = () => {
+  coreGame(gameDescription, getQuestionAndAnswer);
 };
 
 export default gcdGame;

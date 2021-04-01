@@ -1,7 +1,8 @@
-import readlineSync from 'readline-sync';
+import coreGame from '../core.js';
 import getRandomNumber from '../helper/get-random-number.js';
 
 let correctAnswer;
+const gameDescription = 'What number is missing in the progression?';
 
 const getProgression = () => {
   const progression = [];
@@ -23,14 +24,14 @@ const getProgression = () => {
   return progression.join(' ');
 };
 
-const progressionGame = () => {
+const getQuestionAndAnswer = () => {
   const progression = getProgression();
 
-  console.log(`Question: ${progression}`);
+  return [progression, correctAnswer];
+};
 
-  const userAnswer = readlineSync.question('Your answer: ');
-
-  return [+userAnswer, correctAnswer];
+const progressionGame = () => {
+  coreGame(gameDescription, getQuestionAndAnswer);
 };
 
 export default progressionGame;
