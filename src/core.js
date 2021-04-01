@@ -5,7 +5,6 @@ let gameStepCount = 1;
 const processGame = (userName, getQuestionAndAnswer) => {
   const [gameQuestion, correctAnswer] = getQuestionAndAnswer();
 
-  // todo: убрать правильный ответ
   console.log(`Question: ${gameQuestion}`);
   const userAnswer = readlineSync.question('Your answer: ');
 
