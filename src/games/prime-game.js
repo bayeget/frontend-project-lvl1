@@ -1,8 +1,8 @@
 import coreGame from '../core.js';
-import getRandomNumber from '../helper/get-random-number.js';
+import generateRandomNumber from '../helper/generate-random-number.js';
 
-let correctAnswer;
 const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+let correctAnswer;
 
 const isPrime = (num) => {
   for (let i = 2; i < num; i += 1) {
@@ -12,8 +12,8 @@ const isPrime = (num) => {
   return true;
 };
 
-const getQuestionAndAnswer = () => {
-  const questionNumber = getRandomNumber(2, 100);
+const generateQuestionAndAnswer = () => {
+  const questionNumber = generateRandomNumber(2, 100);
 
   if (isPrime(questionNumber)) correctAnswer = 'yes';
   else correctAnswer = 'no';
@@ -22,7 +22,7 @@ const getQuestionAndAnswer = () => {
 };
 
 const primeGame = () => {
-  coreGame(gameDescription, getQuestionAndAnswer);
+  coreGame(gameDescription, generateQuestionAndAnswer);
 };
 
 export default primeGame;

@@ -8,15 +8,14 @@ const processGame = (userName, getQuestionAndAnswer) => {
   console.log(`Question: ${gameQuestion}`);
   const userAnswer = readlineSync.question('Your answer: ');
 
-  if (userAnswer === String(correctAnswer)) {
-    if (gameStepCount < 3) {
-      gameStepCount += gameStepCount;
-      processGame(userName, getQuestionAndAnswer);
-    } else console.log(`Congratulations, ${userName}!`);
-  } else {
+  if (userAnswer !== String(correctAnswer)) {
     console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
     console.log(`Let's try again, ${userName}!`);
+    gameStepCount = 5;
+    return false;
   }
+  gameStepCount += 1;
+  return true;
 };
 
 const coreGame = (description, getQuestionAndAnswer) => {
@@ -24,7 +23,13 @@ const coreGame = (description, getQuestionAndAnswer) => {
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
   console.log(description);
-  processGame(userName, getQuestionAndAnswer);
+  let gameResult;
+
+  while (gameStepCount <= 3) {
+    gameResult = processGame(userName, getQuestionAndAnswer);
+  }
+
+  if (gameResult) console.log(`Congratulations, ${userName}!`);
 };
 
 export default coreGame;

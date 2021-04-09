@@ -1,37 +1,42 @@
 import coreGame from '../core.js';
-import getRandomNumber from '../helper/get-random-number.js';
+import generateRandomNumber from '../helper/generate-random-number.js';
 
 let correctAnswer;
 const gameDescription = 'What number is missing in the progression?';
 
-const getProgression = () => {
+const generateProgression = (start, step, length) => {
   const progression = [];
-  const startProgression = getRandomNumber(0, 100);
-  const stepProgression = getRandomNumber(1, 10);
-  const lengthProgression = getRandomNumber(5, 10);
-  const findNumberProgression = getRandomNumber(1, lengthProgression);
-  let progressionMember = startProgression;
+  let progressionMember = start;
 
-  for (let i = 0; i <= lengthProgression; i += 1) {
-    if (i === findNumberProgression) {
-      progression.push('..');
-      correctAnswer = progressionMember;
-    } else progression.push(progressionMember);
-
-    progressionMember += stepProgression;
+  for (let i = 0; i <= length; i += 1) {
+    progression.push(progressionMember);
+    progressionMember += step;
   }
 
-  return progression.join(' ');
+  return progression;
 };
 
-const getQuestionAndAnswer = () => {
-  const progression = getProgression();
+const hideProgtessionEl = (progression, index) => {
+  const newProgression = progression;
+  newProgression[index] = '..';
+  return newProgression;
+};
+
+const generateQuestionAndAnswer = () => {
+  const startProgression = generateRandomNumber(0, 100);
+  const stepProgression = generateRandomNumber(1, 10);
+  const lengthProgression = generateRandomNumber(5, 10);
+  const progressionArr = generateProgression(startProgression, stepProgression, lengthProgression);
+  const findNumberProgression = generateRandomNumber(1, lengthProgression);
+  correctAnswer = progressionArr[findNumberProgression];
+  const progressionArrWithHideEl = hideProgtessionEl(progressionArr, findNumberProgression);
+  const progression = progressionArrWithHideEl.join(' ');
 
   return [progression, correctAnswer];
 };
 
 const progressionGame = () => {
-  coreGame(gameDescription, getQuestionAndAnswer);
+  coreGame(gameDescription, generateQuestionAndAnswer);
 };
 
 export default progressionGame;

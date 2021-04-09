@@ -1,13 +1,18 @@
 import coreGame from '../core.js';
-import getRandomNumber from '../helper/get-random-number.js';
+import generateRandomNumber from '../helper/generate-random-number.js';
 
 const gameDescription = 'Answer "yes" if the number is even, otherwise answer "no".';
+let correctAnswer;
 
-const getQuestionAndAnswer = () => {
-  const questionNumber = getRandomNumber(0, 10);
-  let correctAnswer;
+const isEven = (num) => {
+  if (num % 2 === 0) return true;
+  return false;
+};
 
-  if (questionNumber % 2 === 0) {
+const generateQuestionAndAnswer = () => {
+  const questionNumber = generateRandomNumber(0, 10);
+
+  if (isEven) {
     correctAnswer = 'yes';
   } else correctAnswer = 'no';
 
@@ -15,7 +20,7 @@ const getQuestionAndAnswer = () => {
 };
 
 const parityCheckGame = () => {
-  coreGame(gameDescription, getQuestionAndAnswer);
+  coreGame(gameDescription, generateQuestionAndAnswer);
 };
 
 export default parityCheckGame;
