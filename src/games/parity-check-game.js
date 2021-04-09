@@ -12,7 +12,7 @@ const isEven = (num) => {
 const generateQuestionAndAnswer = () => {
   const questionNumber = generateRandomNumber(0, 10);
 
-  if (isEven) {
+  if (isEven(questionNumber)) {
     correctAnswer = 'yes';
   } else correctAnswer = 'no';
 
