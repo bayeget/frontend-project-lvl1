@@ -22,7 +22,7 @@ const defineGCD = (firstDivisors, secondDivisors) => {
   return false;
 };
 
-const getQuestionAndAnswer = () => {
+const generateQuestionAndAnswer = () => {
   const firstNumber = generateRandomNumber(1, 100);
   const secondNumber = generateRandomNumber(1, 100);
   const firstNumberDivisors = defineDivisors(firstNumber);
@@ -34,7 +34,7 @@ const getQuestionAndAnswer = () => {
 };
 
 const gcdGame = () => {
-  coreGame(gameDescription, getQuestionAndAnswer);
+  coreGame(gameDescription, generateQuestionAndAnswer);
 };
 
 export default gcdGame;

@@ -9,7 +9,7 @@ const maths = {
 };
 const operators = Object.keys(maths);
 
-const getQuestionAndAnswer = () => {
+const generateQuestionAndAnswer = () => {
   const operatorNumber = generateRandomNumber(0, 3);
   const operator = operators[operatorNumber];
   const firstNumber = generateRandomNumber(0, 100);
@@ -21,7 +21,7 @@ const getQuestionAndAnswer = () => {
 };
 
 const calcGame = () => {
-  coreGame(gameDescription, getQuestionAndAnswer);
+  coreGame(gameDescription, generateQuestionAndAnswer);
 };
 
 export default calcGame;
