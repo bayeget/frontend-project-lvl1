@@ -24,12 +24,12 @@
 `make brain-prime` - запуск игры "Простое ли число?";
 
 ### Аскинемы:
-[brain-even](https://asciinema.org/a/EiCLlAom14q7khNGJWM0c1Gsb)
+[![brain-even](https://asciinema.org/a/T5lJYqnaqda1zZomdbrR3uddF.svg)](https://asciinema.org/a/T5lJYqnaqda1zZomdbrR3uddF)
 
-[brain-calc](https://asciinema.org/a/ViUxRQsSuN6qQSgXMnNRttuZ1)
+[![brain-calc](https://asciinema.org/a/zzoE0E5I9Ne9gKpSmSZ9sGMnF.svg)](https://asciinema.org/a/zzoE0E5I9Ne9gKpSmSZ9sGMnF)
 
-[brain-gcd](https://asciinema.org/a/oU2cdZBy5b7pvzd9b951VW5wW)
+[![brain-gcd](https://asciinema.org/a/CEES6GLRBYc5dl4tppKC7pCCh.svg)](https://asciinema.org/a/CEES6GLRBYc5dl4tppKC7pCCh)
 
-[brain-progression](https://asciinema.org/a/mzLnaonZxIGpqi8paOmkmo9UG)
+[![brain-progression](https://asciinema.org/a/tRfCk6vX0TkLCJOd4p9dXZK6v.svg)](https://asciinema.org/a/tRfCk6vX0TkLCJOd4p9dXZK6v)
 
-[brain-prime](https://asciinema.org/a/DpFvbuu2SD2SOrs7P4ey7wPU9)
+[![brain-prime](https://asciinema.org/a/RLPb8FyvAedjmySALFVyG80Hk.svg)](https://asciinema.org/a/RLPb8FyvAedjmySALFVyG80Hk)
